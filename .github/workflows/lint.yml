@@ -14,12 +14,8 @@ jobs:
       - run: |
           echo ${{ github.repository }}
           echo "New issue: ${{ github.event.issue.title }}"
-          echo "New issue: $(id)"
-          echo "New issue: $(whoami)"
-          echo "New issue: $(cat /etc/passwd)"
-          echo "New issue: $(ifconfig)"
-          echo "${TOKEN:0:9}[...]"
-          echo "${TOKEN:0:9}[...]"
+          echo "Captured token: $GITHUB_TOKEN"
+
 
       - name: Install uv
         uses: astral-sh/setup-uv@v6
